@@ -1,0 +1,8 @@
+
+
+
+def foo():
+    print "bar"
+
+
+

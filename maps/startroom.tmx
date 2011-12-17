@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="20" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="walls" tilewidth="256" tileheight="256">
+  <image source="../images/wall.png" width="1024" height="1024"/>
+ </tileset>
+ <layer name="background" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlkEKACEMA3XV1f+/2PtcgvQWMrehrQgGtbXgzIL/8APfop91zr+uH7xRefjgvehT1Lmf4I26z1ReVD45z/4BZ/6DNzxvevV95jzryoM3r/+zal3dt+y/ZVsBFQ==
+  </data>
+ </layer>
+ <layer name="overhangs" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztzqENACAQBMG3QAj9d4u/BAeoGbduqwAAeKlFj8s9o3v0Oq/Bdxsp3wBn
+  </data>
+ </layer>
+ <objectgroup name="markers" width="40" height="20">
+  <object type="PlayerStart" x="640" y="512" width="128" height="256"/>
+  <object type="Door" x="1792" y="512" width="256" height="256">
+   <properties>
+    <property name="LeadsTo" value="Hall"/>
+   </properties>
+  </object>
+  <object type="Tip" x="1728" y="512" width="384" height="256">
+   <properties>
+    <property name="Text" value="To go through a door, press up (W or Up Arrow), if it is not locked."/>
+   </properties>
+  </object>
+  <object type="Story" x="1280" y="512" width="256" height="256">
+   <properties>
+    <property name="Text" value="It's lonely here.|Maybe some teddy bears would cheer me up?"/>
+   </properties>
+  </object>
+  <object type="Item" x="1536" y="640" width="128" height="128">
+   <properties>
+    <property name="Type" value="TeddyBear"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
