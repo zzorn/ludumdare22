@@ -131,6 +131,25 @@ class TiledMap(TiledElement):
             except (IndexError, ValueError):
                 return None
 
+    def getTileImageForLayer(self, x, y, layer):
+        """
+        return the tile image for this location
+        x and y must be integers and are in tile coordinates, not pixel
+
+        return value will be 0 if there is no tile with that location.
+        """
+
+        try:
+            gid = layer.data[y][x]
+        except (IndexError, ValueError):
+            return None
+        else:
+            try:
+                return self.images[gid]
+            except (IndexError, ValueError):
+                return None
+
+
     def getTileGID(self, x, y, layer):
         """
         return GID of a tile in this location

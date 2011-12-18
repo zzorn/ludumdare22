@@ -3,7 +3,6 @@ import pygame, random, math
 from pygame.locals import *
 from resourcemanager import *
 from room import *
-from tiles import *
 
 class World:
     def __init__(self):
