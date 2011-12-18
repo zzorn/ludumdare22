@@ -1,8 +1,0 @@
-
-
-
-def foo():
-    print "bar"
-
-
-
