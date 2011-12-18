@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="wall" tilewidth="256" tileheight="256">
+  <image source="../images/wall.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="17" name="items" tilewidth="128" tileheight="128">
+  <image source="../images/items.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="81" name="furniture2" tilewidth="256" tileheight="256">
+  <image source="../images/furniture2.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="97" name="furniture" tilewidth="256" tileheight="256">
+  <image source="../images/furniture.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="113" name="creepers" tilewidth="128" tileheight="128">
+  <image source="../images/creepers.png" width="800" height="600"/>
+ </tileset>
+ <tileset firstgid="137" name="bookshelf" tilewidth="256" tileheight="256">
+  <image source="../images/bookshelf.png" width="1024" height="1024"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T+1lC6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAbnEAAAQ==
+  </data>
+ </layer>
+ <layer name="background" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt1jEBgEAAxLDHv2lmFBS4ZK2BngPwDZf+6g4AAH9S/7UOAAA76r/WAQBgR/3XOgAA7Kj/WgcAgB31X+sAALCj/msdAAB21H+tAwDAjvqvdQAA2FH/tQ4AADvqv9YBAGBH/dc6AADsqP9af7oBq34Aqg==
+  </data>
+ </layer>
+ <layer name="stair" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2kEKwjAQBdBuVdQzduH9r6BrK51KQ5JJ3oOugjBJ/5daXBYAAAAAAAAAAAAA2PdqPQAAADCFW7D+rDIF9O0SrOsJ6AkcoSfUlDVvZ+deSw2y7M9y/VyP4PO9nvHMsvbiW6t9jHJ+UErpTugYtckw/5j1/kb7vgfrfjOMa9ZOwB69gC29gC29oJUoe63+P6cTZFIrr3pBZt67wzGyDWTjewtivb57gTPkGs8AW86EX2bPxez75zhZoZbsWcs+PzmMkLMR9kDfRsjYCHugbzIGMT0BAAAAoLQ3CZsFJQ==
+  </data>
+ </layer>
+ <layer name="door" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2TERACAMA8BaZcC/BQwwMMC15f4VZMiURAAAAAAAAAAAAAAAAAAAt43sAAAAQGkzOwAAAABHfD4AAAAA79he+JFeAwAAAAAAAF35OwEAAAAAAPYWjU8CSw==
+  </data>
+ </layer>
+ <layer name="solid" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt3SESgFAMQ8HvuP+NkRkOkCnQXVsX9VzPAfiGy/3VdwAA+JPpvnYHAIA9pvvaHQAA9tDHXfYFAIDQx132BQCA0Mdd9gUAgNDHXfYFAIDQx132BQCA0Mdd9gUAgNDHXfYFAIDQx132BQCAmP6v5w4AAHtM97X70w0LegKo
+  </data>
+ </layer>
+ <layer name="extra" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2UsKwCAMBUAP20XB3n/dSyTEvs4cQIIGyWctAAAAAAAAAAAAAAAAAAAAAACYcU0HAAAAjfZ0ANCgqo+7i84BAAByVfUN+g+gW9c/Y59OInkNpHumA4AG8vofzE9IZL54FvcIAFBLfZXJuwIAcKKqfaG9IwAAAF/3Au7FB7w=
+  </data>
+ </layer>
+ <layer name="extra 2" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt27EJACAMRUGHtbBw/9raAfzBcLdAAoLwiowBAAAAAAAAAAAAAAAAAAB5s3oBLt4DAIDOVvUC8BF9CAB0lmiDHZgBXeh14Bf+KwAAIEV/AAAAKfoDAABI0R8AAECK+04AAABeOgu5BN0=
+  </data>
+ </layer>
+ <layer name="teddy" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztzjENAAAMA6Aqn/aZaNIHFJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANBw6wAAAAAAAAAVD2UTAH8=
+  </data>
+ </layer>
+ <layer name="key" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztzjEBAAAIwKB1t7gx9IAEFAAAAAAAAAAAAAAAAADUXAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnli4vACE
+  </data>
+ </layer>
+</map>

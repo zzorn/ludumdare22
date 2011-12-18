@@ -11,17 +11,22 @@
  </tileset>
  <layer name="background" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJztlkEKACEMA3XV1f+/2PtcgvQWMrehrQgGtbXgzIL/8APfop91zr+uH7xRefjgvehT1Lmf4I26z1ReVD45z/4BZ/6DNzxvevV95jzryoM3r/+zal3dt+y/ZVsBFQ==
+   eJxjYBgFo2AUjIKBAUxofEYK+SwE5EfBKEAGhNILofSJrh9dPTM5jhoFo2AUjAIqAA40PhuN5dlJVA8A1PAAZA==
   </data>
  </layer>
- <layer name="overhangs" width="40" height="20">
+ <layer name="solid" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjAL6A4lhbt8oGNyAXulBgc72jYLBCzjR+NxU5vOi8bnQ+Py4nTYKRgHdAQBCDADn
+   eJxjYBgFwxmwDnL+KBjeYLDF/0DbPwroC0bT3ygYSDDQ9etgS/+jYBQgAwBoDQCD
   </data>
  </layer>
  <layer name="furniture" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjAL6A+khap8YlcyhF5CiUL8WVVxBPJCjkz3iQKxIBXOE0PiSOOwRp4Jdo2AUjIJRMFwAAGFoAWE=
+   eJxjYBgFo2AUjAL6A4khap8YlcyhF5AaaAeQCOToZA+10oMQEWoUqWjfKBgFo2AUDAcAAIWjAOI=
+  </data>
+ </layer>
+ <layer name="furniture 2" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztzUENAAAIBCBb+LB/T1s4d4MCVAHcm/CP3zr8A/hsAaVOAGU=
   </data>
  </layer>
  <objectgroup name="markers" width="40" height="20">
