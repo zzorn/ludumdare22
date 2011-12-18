@@ -3,6 +3,12 @@
  <tileset firstgid="1" name="walls" tilewidth="256" tileheight="256">
   <image source="../images/wall.png" width="1024" height="1024"/>
  </tileset>
+ <tileset firstgid="17" name="furniture" tilewidth="256" tileheight="256">
+  <image source="../images/furniture.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="33" name="items" tilewidth="128" tileheight="128">
+  <image source="../images/items.png" width="1024" height="1024"/>
+ </tileset>
  <layer name="background" width="40" height="20">
   <data encoding="base64" compression="zlib">
    eJztlkEKACEMA3XV1f+/2PtcgvQWMrehrQgGtbXgzIL/8APfop91zr+uH7xRefjgvehT1Lmf4I26z1ReVD45z/4BZ/6DNzxvevV95jzryoM3r/+zal3dt+y/ZVsBFQ==
@@ -10,7 +16,12 @@
  </layer>
  <layer name="overhangs" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJztzqENACAQBMG3QAj9d4u/BAeoGbduqwAAeKlFj8s9o3v0Oq/Bdxsp3wBn
+   eJxjYBgFo2AUjAL6A4lhbt8oGNyAXulBgc72jYLBCzjR+NxU5vOi8bnQ+Py4nTYKRgHdAQBCDADn
+  </data>
+ </layer>
+ <layer name="furniture" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjAL6A+khap8YlcyhF5CiUL8WVVxBPJCjkz3iQKxIBXOE0PiSOOwRp4Jdo2AUjIJRMFwAAGFoAWE=
   </data>
  </layer>
  <objectgroup name="markers" width="40" height="20">
