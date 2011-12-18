@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="99" height="62" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="wall" tilewidth="256" tileheight="256">
+  <image source="../images/wall.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="17" name="items" tilewidth="128" tileheight="128">
+  <image source="../images/items.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="81" name="furniture2" tilewidth="256" tileheight="256">
+  <image source="../images/furniture2.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="97" name="furniture" tilewidth="256" tileheight="256">
+  <image source="../images/furniture.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="113" name="creepers" tilewidth="128" tileheight="128">
+  <image source="../images/creepers.png" width="800" height="600"/>
+ </tileset>
+ <tileset firstgid="137" name="bookshelf" tilewidth="256" tileheight="256">
+  <image source="../images/bookshelf.png" width="1024" height="1024"/>
+ </tileset>
+ <layer name="solid" width="99" height="62">
+  <data encoding="base64" compression="zlib">
+   eJzt3CEOACEMBEAMueT+/2DkScSlKbQzdg1ZzGIYAwC4yZQfnQMAwE2y97McAADqsH9j6RcAgE7s31j6BQCgE/s3ln4BAOjE/o2lXwCA873ZByjk7/7d3UX1u3o2ufcFAACdZP+PJP8sqNYBTQ==
+  </data>
+ </layer>
+ <layer name="background" width="99" height="62">
+  <data encoding="base64" compression="zlib">
+   eJzt18EJACAQA8HzYf8t28KBQg6Z+W4DSRUAAAAAAAAAQM7SAQCAR9L7fXoHAAD60vt9egcAAPrS+316BwAA+vZlT+9//wIAAPjRAXetADY=
+  </data>
+ </layer>
+ <layer name="water" width="99" height="62">
+  <data encoding="base64" compression="zlib">
+   eJztybENAAAEADCb1f/XOsEopF0bAQAAAAAAAAAAAAAAAAAAAAAAAADAV3X8c3gAAIANDaNnAGg=
+  </data>
+ </layer>
+ <layer name="floor" width="99" height="62">
+  <data encoding="base64" compression="zlib">
+   eJzt1LEJACAMBEBbBXH/bd1AESUq3LVpnoR8SgAAAAAAAAAAAAAAAAAAAPHyZN5CUjDiRn9xLzjHPwG36J8Y9gzcon+AHWVz/noHzfLVkBQAAABrOsl7AOs=
+  </data>
+ </layer>
+ <layer name="door" width="99" height="62">
+  <data encoding="base64" compression="zlib">
+   eJztzkERAAAIA6DVtX8BS8zzAwlIAAAAAAAAAAAAAAAAAAAAAABom+8AAAAAAAAAZxYPeQBq
+  </data>
+ </layer>
+ <layer name="key" width="99" height="62">
+  <data encoding="base64" compression="zlib">
+   eJztzgEJAAAMA6B1f/HHGAxNYAIAAAAAAAAAAAAAAAAAAAAAACy7dgAAAAAAAMY8ZRAAhA==
+  </data>
+ </layer>
+</map>
