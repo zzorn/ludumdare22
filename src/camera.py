@@ -10,7 +10,7 @@ class Camera:
             self.y = target.y
         self.dx = 0
         self.dy = 0
-        self.followSpeed = 0.07
+        self.followSpeed = 0.12
         self.foreShadowing = 1.5
         self.surface = surface
         self.target = target

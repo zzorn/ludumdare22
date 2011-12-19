@@ -36,7 +36,7 @@ class Entity():
         self.tileMap = None
         self.image = image
         self.xOffset = self.image.get_rect().centerx
-        self.yOffset = self.image.get_rect().bottom - 20
+        self.yOffset = self.image.get_rect().bottom
         
         # Physics variables:
         self.doPhysics = physics
@@ -49,14 +49,14 @@ class Entity():
         self.envDx = 0
         self.envDy = 0
         self.state = jumpingState # Can be one of the states above
-        self.jumpSpeed = 300 # Speed up when jumping
-        self.flySpeed  = 300 # Sideways speed in air while falling
-        self.walkSpeed = 160
-        self.climbSpeed = 50       
+        self.jumpSpeed  = 400 # Speed up when jumping
+        self.flySpeed   = 150 # Sideways speed in air while falling
+        self.walkSpeed  = 160
+        self.climbSpeed = 100       
         self.swimSpeed = 100
         self.sinkSpeed = -1000 # Floating by default
-        self.fallAcceleration = 10000
-        self.airResistance = 1
+        self.fallAcceleration = 15000
+        self.airResistance = 0.3
         self.waterResistance = 2
         self.bounce = False
         
@@ -201,6 +201,7 @@ class Entity():
             # If we are bouncy, invert deltas
             if self.bounce:
                 # Figure out if we bounced from a horizontal or vertical wall (or both?)
+                # TODO: Better bounce
                 startX = int(self.x)
                 startY = int(self.y)
                 if startX == endX:
@@ -215,6 +216,7 @@ class Entity():
                     self.dy = -self.dy
             else:
                 # We are not bouncy, just stop moving
+                # TODO: Stop moving in direction of wall, not otherwise
                 self.dx = 0
                 self.dy = 0
         else:
@@ -230,7 +232,9 @@ class Entity():
                 elif self.aboveWalkableTile():
                     # We landed on ground or something climbable
                     self.state = walkingState
-                    self.stop()
+                    self.dy = 0
+                    self.ax = 0
+                    self.ay = 0
                                        
             elif self.state == walkingState:
                 if not self.aboveWalkableTile():

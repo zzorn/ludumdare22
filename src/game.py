@@ -40,6 +40,7 @@ world.start()
 
 # Player
 player = Player(64*17, 64*24, imageManager.getTile("victor", 0, 1, 256, transparent=True))
+player.yOffset -= 20 # Stand on ground
 world.currentRoom.getLayer('player').add(player)
 
 # TODO: Enter room
