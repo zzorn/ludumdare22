@@ -36,7 +36,7 @@ class Entity():
         self.tileMap = None
         self.image = image
         self.xOffset = self.image.get_rect().centerx
-        self.yOffset = self.image.get_rect().bottom
+        self.yOffset = self.image.get_rect().bottom - 20
         
         # Physics variables:
         self.doPhysics = physics
