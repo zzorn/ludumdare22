@@ -2,7 +2,7 @@ import pygame, random, math
 from pygame.locals import *
 import textutils
 from colorutils import *
-from room import *
+from tilemap import *
 from world import *
 from camera import *
 from player import *
@@ -35,19 +35,19 @@ textutils.drawTextCentered(screen, "Starting Game...")
 pygame.display.flip()
 
 # Load the world
-world = World()
+world = World(tileSize)
 world.start()
-
-# Keep track of our position
-camera = Camera(8, 4, tileSize)    
 
 # Player
 player = Player(700, 700, imageManager.getTile("victor", 0, 1, 256, transparent=True))
-world.currentRoom.add(player)
+world.currentRoom.getLayer('player').add(player)
 
 # TODO: Enter room
 # TODO: Find entrance position (specified by the door that lead there, or by start pos)
 # TODO: Put player on entrance position
+
+# Keep track of our position
+camera = Camera(screen, target=player)    
 
 # True if any of the specified control keys are pressed
 def pressed(pressedKeys, controlKeys):
@@ -64,6 +64,9 @@ while running:
     # Run at 40 frames per second
     frameDurationSeconds = clock.tick(40) * 0.001 # Returns milliseconds since last call, convert to seconds
 
+    # Update camera
+    camera.update(frameDurationSeconds)
+
     # Check if esc was pressed or window closed
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT:
@@ -72,26 +75,24 @@ while running:
             running = False
 
     # Read pressed keys
-    movementSpeed = 64
+    movementSpeed = 128
     pressedKeys = pygame.key.get_pressed()
+    player.move(0)
     if pressed(pressedKeys, keyLeft):
-            camera.tileX -= 1
             player.move(-movementSpeed)
     if pressed(pressedKeys, keyRight):
-            camera.tileX += 1
             player.move(movementSpeed)
     if pressed(pressedKeys, keyUp):
-            camera.tileY -= 1
             player.jump()
     if pressed(pressedKeys, keyDown):
-            camera.tileY += 1
+            player.jump()
 
     # Fill screen with black, so that earlier graphics dont show up 
     screen.fill(darkgreyblue)
 
     world.currentRoom.update(frameDurationSeconds)
 
-    world.currentRoom.draw(screen, camera)
+    world.currentRoom.draw(camera)
 
     # TODO: Draw map
     # TODO: Draw figures

@@ -2,9 +2,6 @@ import pygame, random, math
 from pygame.locals import *
 from resourcemanager import *
 
-
-
-
 def createEntity(obj):
     x = obj.x + obj.width / 2
     y = obj.y + obj.height
@@ -25,50 +22,32 @@ def createEntity(obj):
 
 
 
-class EntityGroup():
-    def __init__(self):
-        self.entities = []
-        
-    def add(self, entity):
-        self.entities.append(entity) 
-
-    def remove(self, entity):
-        self.entities.remove(entity) 
-
-    def update(self, durationSeconds):
-        for entity in self.entities:
-            entity.update(durationSeconds)
-
-    def draw(self, surface, camera):
-        for entity in self.entities:
-            entity.draw(surface, camera)
-
-
 class Entity():
     def __init__(self, x, y, image, physics=False):
         self.x = x
         self.y = y
         self.dx = 0
         self.dy = 0
-        self.room = None
+        self.tileMap = None
         self.image = image
         self.doPhysics = physics
         self.onGround = False
-        self.jumpSpeed = 10
+        self.jumpSpeed = 100
         self.fallAcceleration = 50
+        self.xOffset = self.image.get_rect().centerx
+        self.yOffset = self.image.get_rect().bottom
         return
         
     def update(self, durationSeconds):
-        if self.doPhysics and not self.room == None:
+        if self.doPhysics and self.tileMap is not None:
             self.physicsUpdate(durationSeconds)
         return
         
-    def draw(self, surface, camera):
-        if not self.image == None:
-            xOffset = self.image.get_rect().centerx
-            yOffset = self.image.get_rect().bottom
-            surface.blit(self.image, (self.x - camera.pixelX() - xOffset, 
-                                      self.y - camera.pixelY() - yOffset))
+    def draw(self, camera):
+        if self.image is not None:
+            camera.drawImage(self.image, 
+                             self.x - self.xOffset, 
+                             self.y - self.yOffset)
 
 
     def move(self, dx):
@@ -85,7 +64,7 @@ class Entity():
             self.dy += self.fallAcceleration * durationSeconds
 
         # Don't move through solid walls
-        if self.room.solidAt(self.x + self.dx * durationSeconds, self.y):
+        if self.tileMap.blockingAt(self.x + self.dx * durationSeconds, self.y):
             self.dx = 0
     
         # Calculate new position
@@ -93,7 +72,7 @@ class Entity():
         self.y += self.dy * durationSeconds
 
         # Check if we are on the ground        
-        if self.room.solidAt(self.x, self.y + 1):
+        if self.tileMap.blockingAt(self.x, self.y + 1):
             self.onGround = True
             self.dy = 0
         else:
