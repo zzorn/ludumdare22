@@ -48,7 +48,7 @@ class Entity():
         self.walkSpeed = 200
         self.climbSpeed = 50
         self.swimSpeed = 200
-        self.fallAcceleration = 200
+        self.fallAcceleration = 500
         self.bounce = True
         
         return
