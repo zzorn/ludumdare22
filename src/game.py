@@ -75,17 +75,19 @@ while running:
             running = False
 
     # Read pressed keys
-    movementSpeed = 128
     pressedKeys = pygame.key.get_pressed()
-    player.move(0)
+    xDir = 0
+    yDir = 0
     if pressed(pressedKeys, keyLeft):
-            player.move(-movementSpeed)
+            xDir -= 1
     if pressed(pressedKeys, keyRight):
-            player.move(movementSpeed)
+            xDir += 1
     if pressed(pressedKeys, keyUp):
-            player.jump()
+            yDir -= 1
     if pressed(pressedKeys, keyDown):
-            player.jump()
+            yDir += 1
+    player.move(xDir, yDir)
+    # TODO: Handle activate key
 
     # Fill screen with black, so that earlier graphics dont show up 
     screen.fill(darkgreyblue)

@@ -9,10 +9,11 @@ from entity import *
 
 
 class TileType:
-    def __init__(self, image, blocking = False, climbable = False):
+    def __init__(self, image, blocking = False, climbable = False, swimmable = False):
         self.image = image
         self.blocking = blocking
         self.climbable = climbable
+        self.swimmable = swimmable
 
     def draw(self, camera, x, y):
         camera.drawImage(self.image, x, y)
@@ -30,6 +31,10 @@ class Layer:
     
     def climbableAt(self, x, y):
         return False    
+
+    def swimmableAt(self, x, y):
+        return False    
+        
         
 class EntityLayer(Layer):
     def __init__(self, tileMap):
@@ -88,6 +93,13 @@ class TileLayer(Layer):
             return False
         else:
             return t.climbable    
+            
+    def swimmableAt(self, x, y):
+        t = self.getTileAtPixel(x, y)
+        if t is None:
+            return False
+        else:
+            return t.swimmable
             
 
     def getTileAtPixel(self, x, y):
@@ -181,6 +193,12 @@ class TileMap:
     def climbableAt(self, x, y):
         for layer in self.layers:
             if layer.climbableAt(x, y):
+                return True
+        return False            
+
+    def swimmableAt(self, x, y):
+        for layer in self.layers:
+            if layer.swimmableAt(x, y):
                 return True
         return False            
 

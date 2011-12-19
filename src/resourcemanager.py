@@ -5,6 +5,7 @@ import weakref
  
 class ResourceManager(object):
     def __init__(self):
+#        self.cache = {}
         self.__dict__.update(dict(
             cache = weakref.WeakValueDictionary(),
         ))
@@ -29,7 +30,9 @@ class ImageManager:
     def getImage(self, imageName, transparent = False):
         fileName = self.baseDir + imageName + ".png"
         img = self.cache.get(fileName)
+        print ("Getting image "+imageName)
         if img == None:
+            print ("   loading it")
             img = pygame.image.load(fileName)
             
             if (transparent):
@@ -37,8 +40,10 @@ class ImageManager:
             else:
                 img = img.convert()
                 
-            self.baseDir + imageName
-            self.cache.store(imageName, img)
+            self.cache.store(fileName, img)
+        else:
+            print ("   already loaded")
+
         return img
  
     # Get a part of an image (specified by a rect)   
@@ -46,17 +51,25 @@ class ImageManager:
         if subArea == None:
             return self.getImage(imageName)
         else:    
+            print ("Getting area "+str(subArea)+" of image "+imageName)
             key = imageName + str(subArea)
             img = self.cache.get(key)
             if img == None:
+                print ("  generating it")
                 img = self.getImage(imageName, transparent)
                 if transparent:                
-                    imagePart = pygame.Surface(subArea.size, flags=pygame.SRCALPHA)
+                    imagePart = img.subsurface(subArea)
+                    #imagePart = pygame.Surface(subArea.size, flags=pygame.SRCALPHA)
                 else:
-                    imagePart = pygame.Surface(subArea.size)
-                imagePart.blit(img, (-subArea.left, -subArea.top))
+                    imagePart = img.subsurface(subArea)
+                    #imagePart = pygame.Surface(subArea.size)
+                #imagePart.blit(img, (-subArea.left, -subArea.top))
                 img = imagePart
                 self.cache.store(key, img)
+                print ("  generated")
+            else:
+                print ("  already generated")
+
             return img
          
     def getTile(self, imageName, x, y, tileSize, transparent = False):

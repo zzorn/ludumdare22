@@ -23,7 +23,10 @@ class World:
         startRoom.addTileLayer('foreground')
 
         for i in range(0,10):
-            self.mapBuilder.addBlock(bg, "stone_1", i * 4, 12)
+            self.mapBuilder.addBlock(bg, "stone", i * 4, 0*4)
+            self.mapBuilder.addBlock(bg, "wall",  i * 4, 2*4)
+            self.mapBuilder.addBlock(bg, "wall",  i * 4, 1*4)
+            self.mapBuilder.addBlock(bg, "stone", i * 4, 3*4)
 
         return startRoom
 
