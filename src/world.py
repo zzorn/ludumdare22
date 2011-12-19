@@ -35,7 +35,7 @@ class World:
             self.mapBuilder.addBlock(ground, "ground_left",  (startX - 4), y)
             self.mapBuilder.addBlock(ground, "ground_right", (endX      ), y)
 
-        # Walkable platforms
+        # lattiat eli ne josta kasvaa esim ruohoa kaytta def makePlatformia
  #       makePlatform(16, 14, 2)
  #       makePlatform(30, 16, 4)
 
@@ -44,10 +44,9 @@ class World:
  #           self.mapBuilder.addBlock(bg, "mud", x, 24)     
 
 
-#        for i in range(0,3):
-#            self.mapBuilder.addBlock(bg, "stone", i * 4, 12)
+
             
-        #reunat
+        #reunat ala koske
         for x in range(0,mapSizex, 4 ):
             for y in range(0,9,4):
                 self.mapBuilder.addBlock(bg, "stone", x , y )
@@ -69,17 +68,9 @@ class World:
 
         
 
-       
+       # etukivet eli lattia mutaa ei se paalle tuleva vaa se nelio
         for i in range(16, 21, 4):
             self.mapBuilder.addBlock(bg, "stone", i , 24)
- #       for i in range(7,9):
- #          self.mapBuilder.addBlock(bg, "stone", (i * 4)+3, 21)
- #      for i in range(10,13):
- #          self.mapBuilder.addBlock(bg, "stone", (i * 4), 20)
- #      for i in range(13,15):
- #           self.mapBuilder.addBlock(bg, "stone", (i * 4)+1, 19)
- #       for i in range(15,19):
- #           self.mapBuilder.addBlock(bg, "stone", (i * 4)+1, 21)     
 
         for x in range(0, mapSizex):
             for y in range(0,mapSizey):
