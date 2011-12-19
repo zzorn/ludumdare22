@@ -17,6 +17,7 @@ class World:
 
     def createStartRoom(self):
         startRoom = TileMap(self.tileSize, 100, 20)
+        backWall = startRoom.addTileLayer('backWall')
         bg = startRoom.addTileLayer('background')
         startRoom.addEntityLayer('entities')
         startRoom.addEntityLayer('player')
@@ -34,7 +35,10 @@ class World:
             self.mapBuilder.addBlock(bg, "stone", (i * 4)+1, 14)
         for i in range(15,19):
             self.mapBuilder.addBlock(bg, "stone", (i * 4)+1, 16)     
-            
+
+        for x in range(0, 20):
+            for y in range(0,20):
+                self.mapBuilder.addBlock(backWall, "wall", x * 4, y * 4)     
 
         return startRoom
 
