@@ -42,14 +42,23 @@ class Entity():
         self.doPhysics = physics
         self.dx = 0
         self.dy = 0
+        self.ax = 0
+        self.ay = 0
+        self.thrustX = 0
+        self.thrustY = 0
+        self.envDx = 0
+        self.envDy = 0
         self.state = jumpingState # Can be one of the states above
-        self.jumpSpeed = 200 # Speed up when jumping
-        self.flySpeed  = 200 # Sideways speed in air while falling
-        self.walkSpeed = 200
-        self.climbSpeed = 50
-        self.swimSpeed = 200
-        self.fallAcceleration = 1000
-        self.bounce = True
+        self.jumpSpeed = 300 # Speed up when jumping
+        self.flySpeed  = 300 # Sideways speed in air while falling
+        self.walkSpeed = 160
+        self.climbSpeed = 50       
+        self.swimSpeed = 100
+        self.sinkSpeed = -1000 # Floating by default
+        self.fallAcceleration = 10000
+        self.airResistance = 1
+        self.waterResistance = 2
+        self.bounce = False
         
         return
         
@@ -66,6 +75,11 @@ class Entity():
 
     # Moves the entity in the specified direction
     def move(self, xDir, yDir, disengage = False):
+
+        # The accelecration done by movement, used for flying or swimming (walking and climbing directly modifies the velocity)
+        self.thrustX = 0
+        self.thrustY = 0
+        
         # Act differently depending on where the character is:
         
         # On ground
@@ -106,8 +120,8 @@ class Entity():
         # In air
         elif self.state == jumpingState:
             # Control air movement (e.g. with wings in case of main character)
-            self.dx = xDir * self.flySpeed
-            self.dy = yDir * self.flySpeed
+            self.thrustX = xDir * self.flySpeed
+            self.thrustY = yDir * self.flySpeed
         
             # If we are over a climbable object, and player pressed up, start climbing
             if yDir < 0 and self.atClimbableTile():
@@ -133,8 +147,8 @@ class Entity():
         # Swimming
         elif self.state == swimmingState:
             # Swimming movement 
-            self.dx = xDir * self.swimSpeed
-            self.dy = yDir * self.swimSpeed
+            self.thrustX = xDir * self.swimSpeed
+            self.thrustY = yDir * self.swimSpeed
     
         
     def physicsUpdate(self, durationSeconds):
@@ -148,17 +162,37 @@ class Entity():
             return # No need to do any other physics while we are in an invalid place
             
 
-        # If we are jumping, update fall speed
+        # Add external forces based on state
         if self.state == jumpingState:
-            self.dy += self.fallAcceleration * durationSeconds    
+            # If we are jumping, update fall speed
+            self.ay = self.fallAcceleration * durationSeconds    
 
-        # If we are swimming, add wave forces (sine over time)
-        # TODO            
+            # Apply air resistance
+            self.dx -= self.dx * self.airResistance * durationSeconds
+            self.dy -= self.dy * self.airResistance * durationSeconds
+        
+        elif self.state == swimmingState:
+            # If we are swimming, add wave forces (sine over time)
+            timeSec = pygame.time.get_ticks() * 0.001
+            self.ax = math.sin(timeSec*1.52) * 800 * durationSeconds
+            self.ay = (math.sin(timeSec*1.62) * 500 + self.sinkSpeed) * durationSeconds 
 
+            # Apply water resistance
+            self.dx -= self.dx * self.waterResistance * durationSeconds
+            self.dy -= self.dy * self.waterResistance * durationSeconds
 
+        else:
+            # No acceleration for climbing or walking states
+            self.ax = 0
+            self.ay = 0
+
+        # Calculate velocity from acceleration
+        self.dx += (self.ax + self.thrustX) * durationSeconds
+        self.dy += (self.ay + self.thrustY) * durationSeconds
+        
         # Calculate new pos
-        newX = self.x + self.dx * durationSeconds
-        newY = self.y + self.dy * durationSeconds
+        newX = self.x + (self.dx) * durationSeconds
+        newY = self.y + (self.dy) * durationSeconds
         
         # Check if we would go into a wall
         endX   = int(newX)
@@ -194,9 +228,9 @@ class Entity():
                     # We fell into water
                     self.state = swimmingState               
                 elif self.aboveWalkableTile():
-                    # We are above the ground
+                    # We landed on ground or something climbable
                     self.state = walkingState
-                    self.dy = 0 
+                    self.stop()
                                        
             elif self.state == walkingState:
                 if not self.aboveWalkableTile():
@@ -212,6 +246,11 @@ class Entity():
                     self.state = jumpingState
                     
 
+    def stop(self):
+        self.dx = 0
+        self.dy = 0
+        self.ax = 0
+        self.ay = 0
         
     def aboveWalkableTile(self):
         return self.aboveClimbableTile() or self.aboveBlockingTile()
