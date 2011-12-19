@@ -39,7 +39,7 @@ world = World(tileSize)
 world.start()
 
 # Player
-player = Player(700, 700, imageManager.getTile("victor", 0, 1, 256, transparent=True))
+player = Player(64*17, 64*24, imageManager.getTile("victor", 0, 1, 256, transparent=True))
 world.currentRoom.getLayer('player').add(player)
 
 # TODO: Enter room

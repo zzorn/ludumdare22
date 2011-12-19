@@ -17,7 +17,7 @@ class World:
 
     def createStartRoom(self):
         mapSizex = 100
-        mapSizey = 100
+        mapSizey = 50
         startRoom = TileMap(self.tileSize ,mapSizex ,mapSizey)
         backWall = startRoom.addTileLayer('backWall')
         bg = startRoom.addTileLayer('solid')
@@ -36,35 +36,50 @@ class World:
             self.mapBuilder.addBlock(ground, "ground_right", (endX      ), y)
 
         # Walkable platforms
-        makePlatform(16, 14, 2)
-        makePlatform(30, 16, 4)
+ #       makePlatform(16, 14, 2)
+ #       makePlatform(30, 16, 4)
 
         # Mud at bottom
-        for x in range(0,20*4, 4):
-            self.mapBuilder.addBlock(bg, "mud", x, 24)     
+ #       for x in range(0,20*4, 4):
+ #           self.mapBuilder.addBlock(bg, "mud", x, 24)     
 
 
-        for i in range(0,3):
-            self.mapBuilder.addBlock(bg, "stone", i * 4, 12)
+#        for i in range(0,3):
+#            self.mapBuilder.addBlock(bg, "stone", i * 4, 12)
             
         #reunat
-        for x in range(0,mapSizex ):
-            for y in range(0,2):
-                self.mapBuilder.addBlock(bg, "stone", x * 4, y * 4)
+        for x in range(0,mapSizex, 4 ):
+            for y in range(0,9,4):
+                self.mapBuilder.addBlock(bg, "stone", x , y )
+        for x in range(0,13,4 ):
+            for y in range(0,mapSizey, 4):
+                self.mapBuilder.addBlock(bg, "stone", x , y )
+        for x in range(mapSizex-16,mapSizex, 4 ):
+            for y in range(0,mapSizey, 4):
+                self.mapBuilder.addBlock(bg, "stone", x , y )
+        for x in range(0,mapSizex, 4 ):
+            for y in range(mapSizey-12,mapSizey, 4):
+                self.mapBuilder.addBlock(bg, "stone", x , y )
+
+
+
+
+
+
 
         
 
        
-        for i in range(4,6):
-            self.mapBuilder.addBlock(bg, "stone", (i * 4)-1, 16)
-        for i in range(7,9):
-            self.mapBuilder.addBlock(bg, "stone", (i * 4)+3, 21)
-        for i in range(10,13):
-            self.mapBuilder.addBlock(bg, "stone", (i * 4), 20)
-        for i in range(13,15):
-            self.mapBuilder.addBlock(bg, "stone", (i * 4)+1, 19)
-        for i in range(15,19):
-            self.mapBuilder.addBlock(bg, "stone", (i * 4)+1, 21)     
+        for i in range(16, 21, 4):
+            self.mapBuilder.addBlock(bg, "stone", i , 24)
+ #       for i in range(7,9):
+ #          self.mapBuilder.addBlock(bg, "stone", (i * 4)+3, 21)
+ #      for i in range(10,13):
+ #          self.mapBuilder.addBlock(bg, "stone", (i * 4), 20)
+ #      for i in range(13,15):
+ #           self.mapBuilder.addBlock(bg, "stone", (i * 4)+1, 19)
+ #       for i in range(15,19):
+ #           self.mapBuilder.addBlock(bg, "stone", (i * 4)+1, 21)     
 
         for x in range(0, mapSizex):
             for y in range(0,mapSizey):
