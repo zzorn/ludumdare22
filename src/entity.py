@@ -229,8 +229,14 @@ class Entity():
                 if self.atSwimmableTile():
                     # We fell into water
                     self.state = swimmingState               
-                elif self.aboveWalkableTile():
-                    # We landed on ground or something climbable
+                elif self.aboveBlockingTile():
+                    # We landed on ground
+                    self.state = walkingState
+                    self.dy = 0
+                    self.ax = 0
+                    self.ay = 0
+                elif self.aboveClimbableTile() and dy > 0:
+                    # We were dropping down and landed on something climbable
                     self.state = walkingState
                     self.dy = 0
                     self.ax = 0
