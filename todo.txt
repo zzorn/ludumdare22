@@ -1,10 +1,15 @@
 *viktor ei saa mennä seinätiilien läpi edes päällään ==> viktorin osumakohta kapee nelikulmaine 
                                                         joka ulottuu päästä varpaisiin
-*käyttyöön uudet kuvat  
+!!!!!*käyttyöön uudet kuvat  
 
 *lisaa woord tiedostoon esimerkit eri kuvita ja selitykset miten niitä käytän eli jos
  deffi ni sen parametrikäyttöohjeet tai tarvittavat peruskoot jne
 
-*wordiin jokin joka tekee niin että ei aina pitäs laske reuna+"paikka sille jota haluaa laittaa"
+*worldiin jokin joka tekee niin että ei aina pitäs laske reuna+"paikka sille jota haluaa laittaa"
  eli että se x in range jutun 0=reunan sisäpuoli tai jotai josta sen sais helposti aina otettuu
  sen reunan koon ilman et piti laskea että se on esin 4 tileä eli 16
+
+!!!!!*irrota mulle kamera niin että voin generoida leveleit
+
+
+
