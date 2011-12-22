@@ -17,7 +17,7 @@ class World:
 
     def createStartRoom(self):
         mapSizex = 100
-        mapSizey = 50
+        mapSizey = 48
         startRoom = TileMap(self.tileSize ,mapSizex ,mapSizey)
         backWall = startRoom.addTileLayer('backWall')
         bg = startRoom.addTileLayer('solid')
@@ -61,17 +61,35 @@ class World:
                 self.mapBuilder.addBlock(bg, "stone", x , y )
 
 
-
-
-
-
-
         
 
-       # etukivet eli lattia mutaa ei se paalle tuleva vaa se nelio
-        for i in range(16, 21, 4):
-            self.mapBuilder.addBlock(bg, "stone", i , 24)
+       #    etukivet eli lattia mutaa ei se paalle tuleva vaa se nelio
+        for x in range(16, 21, 4):
+            for y in range( 24, 40, 4): 
+                self.mapBuilder.addBlock(bg, "stone", x , y)
+        for x in range(32, 37, 4):
+            for y in range( 24, 40, 4): 
+                self.mapBuilder.addBlock(bg, "stone", x , y)
 
+      
+
+        # mud at bottom
+        for x in range(24, 32, 4):
+            self.mapBuilder.addBlock(bg, "mud", x, 26)  
+
+
+       # lattiat eli ne josta kasvaa esim ruohoa kaytta def makePlatformia
+        makePlatform(16, 24, 2)
+        makePlatform(32, 24, 2)
+
+   
+
+   
+      
+
+      
+
+        # takaseina, ala koske
         for x in range(0, mapSizex):
             for y in range(0,mapSizey):
                 self.mapBuilder.addBlock(backWall, "wall", x * 4, y * 4)     
