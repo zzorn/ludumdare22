@@ -64,10 +64,10 @@ class World:
         
 
        #    etukivet eli lattia mutaa ei se paalle tuleva vaa se nelio
-        for x in range(16, 21, 4):
+        for x in range(16, 24, 4):
             for y in range( 24, 40, 4): 
                 self.mapBuilder.addBlock(bg, "stone", x , y)
-        for x in range(32, 37, 4):
+        for x in range(32, 39, 4):
             for y in range( 24, 40, 4): 
                 self.mapBuilder.addBlock(bg, "stone", x , y)
 
@@ -76,11 +76,18 @@ class World:
         # mud at bottom
         for x in range(24, 32, 4):
             self.mapBuilder.addBlock(bg, "mud", x, 26)  
+        for x in range(40, 48, 4):
+            self.mapBuilder.addBlock(bg, "mud", x, 26)  
+        
 
 
        # lattiat eli ne josta kasvaa esim ruohoa kaytta def makePlatformia
         makePlatform(16, 24, 2)
         makePlatform(32, 24, 2)
+        makePlatform(48, 26, 1)
+        makePlatform(53, 28, 1)
+
+        
 
    
 
