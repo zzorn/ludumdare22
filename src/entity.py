@@ -52,7 +52,7 @@ class Entity():
         self.jumpSpeed  = 350 # Speed up when jumping
         self.flySpeed   = 120 # Sideways speed in air while falling
         self.walkSpeed  = 200
-        self.climbSpeed = 200       
+        self.climbSpeed = 170       
         self.swimSpeed = 100
         self.sinkSpeed = -1000 # Floating by default
         self.fallAcceleration = 15000
