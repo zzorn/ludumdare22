@@ -10,13 +10,15 @@ def createRoom01(tileSet):
     mapSizex = 100
     mapSizey = 48
     startRoom = TileMap(tileSet.tileSize ,mapSizex ,mapSizey)
-    backWall = startRoom.addTileLayer('backWall')
-    bg = startRoom.addTileLayer('solid')
-    ground = startRoom.addTileLayer('ground')
-    startRoom.addEntityLayer('entities')
-    startRoom.addEntityLayer('player')
-    startRoom.addTileLayer('foreground')
-
+    
+    backWall   = startRoom.addTileLayer('backWall')
+    bg         = startRoom.addTileLayer('solid')
+    ground     = startRoom.addTileLayer('ground')
+    furniture  = startRoom.addTileLayer('furniture')
+    entities   = startRoom.addEntityLayer('entities')
+    player     = startRoom.addEntityLayer('player')
+    foreground = startRoom.addTileLayer('foreground')
+    
     
     def makePlatform(startX, y, width, leftEndBlock=True, rightEndBlock=True):
         endX = 4 * width + startX
@@ -27,7 +29,13 @@ def createRoom01(tileSet):
   
 
 
+    # Kirjahylly!
+    def kirjahylly(x, y):
+        tileSet.putBlock(furniture, "bookshelf", x+1, y)
+        tileSet.putBlock(furniture, "bookshelfEdgeLeft", x, y)
+        tileSet.putBlock(furniture, "bookshelfEdgeRight", x+5, y)
 
+    kirjahylly(33, 20)
         
     #reunat ala koske
     for x in range(0,mapSizex, 4 ):

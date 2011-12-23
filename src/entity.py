@@ -52,7 +52,7 @@ class Entity():
         self.jumpSpeed  = 350 # Speed up when jumping
         self.flySpeed   = 120 # Sideways speed in air while falling
         self.walkSpeed  = 200
-        self.climbSpeed = 100       
+        self.climbSpeed = 200       
         self.swimSpeed = 100
         self.sinkSpeed = -1000 # Floating by default
         self.fallAcceleration = 15000
@@ -235,7 +235,7 @@ class Entity():
                     self.dy = 0
                     self.ax = 0
                     self.ay = 0
-                elif self.aboveClimbableTile() and dy > 0:
+                elif self.aboveClimbableTile() and self.dy > 0:
                     # We were dropping down and landed on something climbable
                     self.state = walkingState
                     self.dy = 0
