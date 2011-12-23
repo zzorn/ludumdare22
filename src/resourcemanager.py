@@ -27,10 +27,11 @@ class ImageManager:
         self.baseDir = baseDir
 
     # Get an image with the specified name        
-    def getImage(self, imageName, transparent = False):
+    def getImage(self, imageName):
         fileName = self.baseDir + imageName + ".png"
+        transparent = not fileName.endsWith("_solid")
         img = self.cache.get(fileName)
-        print ("Getting image "+imageName)
+        print ("Getting image "+imageName + " which is transparent: " + str(transparent))
         if img == None:
             print ("   loading it")
             img = pygame.image.load(fileName)
@@ -47,7 +48,8 @@ class ImageManager:
         return img
  
     # Get a part of an image (specified by a rect)   
-    def get(self, imageName, subArea = None, transparent = False):
+    def get(self, imageName, subArea = None):
+        transparent = not fileName.endsWith("_solid")
         if subArea == None:
             return self.getImage(imageName)
         else:    
@@ -56,7 +58,7 @@ class ImageManager:
             img = self.cache.get(key)
             if img == None:
                 print ("  generating it")
-                img = self.getImage(imageName, transparent)
+                img = self.getImage(imageName)
                 if transparent:                
                     imagePart = img.subsurface(subArea)
                     #imagePart = pygame.Surface(subArea.size, flags=pygame.SRCALPHA)
@@ -72,8 +74,8 @@ class ImageManager:
 
             return img
          
-    def getTile(self, imageName, x, y, tileSize, transparent = False):
-        return self.get(imageName, pygame.Rect(x * tileSize, y * tileSize, tileSize, tileSize), transparent)
+    def getTile(self, imageName, x, y, tileSize):
+        return self.get(imageName, pygame.Rect(x * tileSize, y * tileSize, tileSize, tileSize))
 
          
 imageManager = ImageManager("images/")
