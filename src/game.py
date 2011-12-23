@@ -11,14 +11,16 @@ from player import *
 gameName = "Vampire and Teddybears"
 screenSize = [1024, 256*3]
 tileSize = 64
+cameraSpeed = 1000
 
 # Input keys
-keyUp       = [K_UP, K_w]
-keyDown     = [K_DOWN, K_s]
-keyLeft     = [K_LEFT, K_a]
-keyRight    = [K_RIGHT, K_d]
-keyActivate = [K_SPACE, K_RETURN]
-keyBack     = [K_ESCAPE]
+keyUp        = [K_UP, K_w]
+keyDown      = [K_DOWN, K_s]
+keyLeft      = [K_LEFT, K_a]
+keyRight     = [K_RIGHT, K_d]
+keyActivate  = [K_SPACE, K_RETURN]
+keyBack      = [K_ESCAPE]
+toggleCamera = K_v
 
 # Setup screen
 pygame.init()
@@ -43,6 +45,7 @@ player = Player(64*17, 64*24, imageManager.getTile("victor", 0, 1, 256, transpar
 player.yOffset -= 20 # Stand on ground
 world.currentRoom.getLayer('player').add(player)
 
+
 # TODO: Enter room
 # TODO: Find entrance position (specified by the door that lead there, or by start pos)
 # TODO: Put player on entrance position
@@ -55,6 +58,10 @@ def pressed(pressedKeys, controlKeys):
     for key in controlKeys:
         if pressedKeys[key]: return True
     return False
+
+
+def isFreeCamMode():
+    return camera.target == None
 
 
 # Main loop 
@@ -74,6 +81,11 @@ while running:
             running = False
         elif event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
             running = False
+        elif event.type == pygame.KEYDOWN and event.key == toggleCamera:
+            if isFreeCamMode():
+                camera.target = player
+            else:
+                camera.target = None
 
     # Read pressed keys
     pressedKeys = pygame.key.get_pressed()
@@ -87,7 +99,13 @@ while running:
             yDir -= 1
     if pressed(pressedKeys, keyDown):
             yDir += 1
-    player.move(xDir, yDir)
+
+    if isFreeCamMode():
+        camera.x += xDir * cameraSpeed * frameDurationSeconds
+        camera.y += yDir * cameraSpeed * frameDurationSeconds
+    else:    
+        player.move(xDir, yDir)
+    
     # TODO: Handle activate key
 
     # Fill screen with black, so that earlier graphics dont show up 

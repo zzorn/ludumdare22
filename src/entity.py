@@ -49,9 +49,9 @@ class Entity():
         self.envDx = 0
         self.envDy = 0
         self.state = jumpingState # Can be one of the states above
-        self.jumpSpeed  = 400 # Speed up when jumping
-        self.flySpeed   = 150 # Sideways speed in air while falling
-        self.walkSpeed  = 160
+        self.jumpSpeed  = 350 # Speed up when jumping
+        self.flySpeed   = 120 # Sideways speed in air while falling
+        self.walkSpeed  = 200
         self.climbSpeed = 100       
         self.swimSpeed = 100
         self.sinkSpeed = -1000 # Floating by default

@@ -1,5 +1,7 @@
 
 from mathutils import *
+from entity import *
+
 
 class Camera:
     def __init__(self, surface, target = None):
