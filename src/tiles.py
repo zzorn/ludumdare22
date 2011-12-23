@@ -28,15 +28,15 @@ def setupTiles(tileSize):
     tiles.addRandomAlternative("stone", "stone4", 2)
 
     # Slime 
-    tiles.add("slime", "walls_solid", 0, 8, 4, 4, swimmable=True)
-    tiles.add("slimeSurface1", "walls_transparent", 0, 2, 4, 4, swimmable=True)
-    tiles.add("slimeSurface2", "walls_transparent", 4, 2, 4, 4, swimmable=True)
-    tiles.addRandomAlternative("slimeSurface", "slimeSurface1", 1)
-    tiles.addRandomAlternative("slimeSurface", "slimeSurface2", 1)
+    tiles.add("mud", "walls_solid", 0, 8, 4, 4, swimmable=True)
+    tiles.add("mudSurface1", "walls_transparent", 0, 2, 4, 4, swimmable=True)
+    tiles.add("mudSurface2", "walls_transparent", 4, 2, 4, 4, swimmable=True)
+    tiles.addRandomAlternative("mudSurface", "mudSurface1", 1)
+    tiles.addRandomAlternative("mudSurface", "mudSurface2", 1)
 
     # Floor
     tiles.add("floorLeft",  "walls_transparent", 0,  0, 1, 1, blocking=True)
-    tiles.add("floorRight", "walls_transparent", 23, 0, 1, 1, blocking=True)
+    tiles.add("floorRight", "walls_transparent", 19, 0, 1, 1, blocking=True)
     tiles.add("floorShort", "walls_transparent", 1,  0, 2, 1, blocking=True)
     tiles.add("floor1",     "walls_transparent", 3,  0, 4, 1, blocking=True)
     tiles.add("floor2",     "walls_transparent", 7,  0, 4, 1, blocking=True)
@@ -58,10 +58,10 @@ def setupTiles(tileSize):
     tiles.addRandomAlternative("bookshelfEdgeRight", "bookshelfEdgeRight1", 1)
     tiles.addRandomAlternative("bookshelfEdgeRight", "bookshelfEdgeRight2", 1)
 
-    tiles.add("bookshelf1",  "bookshelf", 9, 0, 4, 4, climbable=True)
-    tiles.add("bookshelf2",  "bookshelf", 9, 4, 4, 4, climbable=True)
-    tiles.add("bookshelf3",  "bookshelf", 9, 8, 4, 4, climbable=True)
-    tiles.add("bookshelf4",  "bookshelf", 9, 12, 4, 4, climbable=True)
+    tiles.add("bookshelf1",  "bookshelf", 5, 0, 4, 4, climbable=True)
+    tiles.add("bookshelf2",  "bookshelf", 5, 4, 4, 4, climbable=True)
+    tiles.add("bookshelf3",  "bookshelf", 5, 8, 4, 4, climbable=True)
+    tiles.add("bookshelf4",  "bookshelf", 5, 12, 4, 4, climbable=True)
     tiles.addRandomAlternative("bookshelf", "bookshelf1", 1)
     tiles.addRandomAlternative("bookshelf", "bookshelf2", 1)
     tiles.addRandomAlternative("bookshelf", "bookshelf3", 1)

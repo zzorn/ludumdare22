@@ -38,8 +38,8 @@ class RandomBlock:
         for i in range(0, weight):
             self.alternatives.append(alternativeBlock)
         
-    def add(self, tileLayer, tileX, tileY):
-        random.choice(self.alternatives).add(tileLayer, tileX, tileY)
+    def putBlock(self, tileLayer, tileX, tileY):
+        random.choice(self.alternatives).putBlock(tileLayer, tileX, tileY)
         
 
 # Contains set of named tiles and tile blocks loaded from image files.
@@ -47,20 +47,23 @@ class TileSet:
     def __init__(self, tileSize):
         self.tileSize = tileSize
         
-        blocks = {}
-        self.blocks = blocks
+        self.blocks = {}
 
     def add(self, blockName, imageName, tileX, tileY, blockW, blockH, blocking=False, swimmable=False, climbable=False):
-        blocks[blockName] = TileBlock(imageName, tileSize, tileX, tileY, blockW, blockH, blocking, swimmable, climbable)
+        self.blocks[blockName] = TileBlock(imageName, self.tileSize, tileX, tileY, blockW, blockH, blocking, swimmable, climbable)
 
     def addRandomAlternative(self, blockName, otherBlock, weight=1):
-        randomBlock = blocks[blockName]
-        if randomBlock is None:
-            randomBlock = new RandomBlock({})
-        elif randomBlock is not RandomBlock:
-            raise ("Can not add random alternative to "+blockName+", it's not a random block!")
+        if blockName in self.blocks:
+            randomBlock = self.blocks[blockName]
+            if randomBlock is not RandomBlock:
+                print("ERROR: Can not add random alternative to "+blockName+", it's not a random block!")
+                # TODO: Throw exception
+        else:
+            randomBlock =  RandomBlock({})
+            self.blocks[blockName] = randomBlock
+            
 
-        randomBlock.addAlternative(otherBlock, weight)
+        randomBlock.addAlternative(self.blocks[otherBlock], weight)
 
 
     def putBlock(self, tileLayer, blockName, tileX, tileY):

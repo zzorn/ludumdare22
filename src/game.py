@@ -7,7 +7,7 @@ from world import *
 from camera import *
 from player import *
 from tiles import *
-from tileSet import *
+from tileset import *
 
 # Some constants
 gameName = "Vampire and Teddybears"
@@ -46,7 +46,7 @@ world = World(tileSize, tiles)
 world.start()
 
 # Player
-player = Player(64*17, 64*24, imageManager.getTile("victor", 0, 1, 256, transparent=True))
+player = Player(64*17, 64*24, imageManager.getTile("victor", 0, 1, 256))
 player.yOffset -= 20 # Stand on ground
 world.currentRoom.getLayer('player').add(player)
 

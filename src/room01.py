@@ -9,7 +9,7 @@ from maputils import *
 def createRoom01(tileSet):
     mapSizex = 100
     mapSizey = 48
-    startRoom = TileMap(self.tileSize ,mapSizex ,mapSizey)
+    startRoom = TileMap(tileSet.tileSize ,mapSizex ,mapSizey)
     backWall = startRoom.addTileLayer('backWall')
     bg = startRoom.addTileLayer('solid')
     ground = startRoom.addTileLayer('ground')
@@ -21,9 +21,9 @@ def createRoom01(tileSet):
     def makePlatform(startX, y, width, leftEndBlock=True, rightEndBlock=True):
         endX = 4 * width + startX
         for x in range(startX, endX, 4):  
-            tileSet.putBlock(ground, "ground", x, y)
-        if leftEndBlock: tileSet.putBlock(ground, "groundLeft",  (startX - 4), y)
-        if rightEndBlock: tileSet.putBlock(ground, "groundRight", (endX      ), y)
+            tileSet.putBlock(ground, "floor", x, y)
+        if leftEndBlock: tileSet.putBlock(ground, "floorLeft",  (startX - 1), y)
+        if rightEndBlock: tileSet.putBlock(ground, "floorRight", (endX      ), y)
   
 
 

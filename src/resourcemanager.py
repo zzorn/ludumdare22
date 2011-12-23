@@ -28,8 +28,8 @@ class ImageManager:
 
     # Get an image with the specified name        
     def getImage(self, imageName):
+        transparent = not imageName.endswith("_solid")
         fileName = self.baseDir + imageName + ".png"
-        transparent = not fileName.endsWith("_solid")
         img = self.cache.get(fileName)
         print ("Getting image "+imageName + " which is transparent: " + str(transparent))
         if img == None:
@@ -49,7 +49,7 @@ class ImageManager:
  
     # Get a part of an image (specified by a rect)   
     def get(self, imageName, subArea = None):
-        transparent = not fileName.endsWith("_solid")
+        transparent = not imageName.endswith("_solid")
         if subArea == None:
             return self.getImage(imageName)
         else:    
