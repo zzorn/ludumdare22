@@ -7,7 +7,6 @@ from camera import *
 from entity import *
 
 
-
 class TileType:
     def __init__(self, image, blocking = False, climbable = False, swimmable = False):
         self.image = image

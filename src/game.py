@@ -6,6 +6,8 @@ from tilemap import *
 from world import *
 from camera import *
 from player import *
+from tiles import *
+from tileSet import *
 
 # Some constants
 gameName = "Vampire and Teddybears"
@@ -36,8 +38,11 @@ screen.fill(darkgreyblue)
 textutils.drawTextCentered(screen, "Starting Game...")
 pygame.display.flip()
 
+# Load tiles
+tiles = setupTiles(tileSize)
+
 # Load the world
-world = World(tileSize)
+world = World(tileSize, tiles)
 world.start()
 
 # Player

@@ -7,12 +7,12 @@ from maputils import *
 from room01 import *
 
 class World:
-    def __init__(self, tileSize):
+    def __init__(self, tileSize, tileSet):
         self.tileSize = tileSize
-        self.mapBuilder = MapBuilder(tileSize)
+        self.tileSet = tileSet
                 
     # Sets up world to start positions
     def start(self):
-        self.currentRoom = createRoom01(self.mapBuilder)
+        self.currentRoom = createRoom01(self.tileSet)
 
 
