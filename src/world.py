@@ -27,21 +27,13 @@ class World:
         startRoom.addTileLayer('foreground')
 
         
-        def makePlatform(startX, y, width):
+        def makePlatform(startX, y, width, leftEndBlock=True, rightEndBlock=True):
             endX = 4 * width + startX
             for x in range(startX, endX, 4):  
-                self.mapBuilder.addBlock(bg, "stone", x, y)
                 self.mapBuilder.addBlock(ground, "ground", x, y)
-            self.mapBuilder.addBlock(ground, "ground_left",  (startX - 4), y)
-            self.mapBuilder.addBlock(ground, "ground_right", (endX      ), y)
-
-        # lattiat eli ne josta kasvaa esim ruohoa kaytta def makePlatformia
- #       makePlatform(16, 14, 2)
- #       makePlatform(30, 16, 4)
-
-        # Mud at bottom
- #       for x in range(0,20*4, 4):
- #           self.mapBuilder.addBlock(bg, "mud", x, 24)     
+            if leftEndBlock: self.mapBuilder.addBlock(ground, "ground_left",  (startX - 4), y)
+            if rightEndBlock: self.mapBuilder.addBlock(ground, "ground_right", (endX      ), y)
+      
 
 
 
@@ -63,29 +55,45 @@ class World:
 
         
 
-       #    etukivet eli lattia mutaa ei se paalle tuleva vaa se nelio
+       #    etukivet eli lattia mutaa ei se paalle tuleva vaa se nelio ... in range(alkuruutu, loppuruutu, hyppays)
         for x in range(16, 24, 4):
             for y in range( 24, 40, 4): 
                 self.mapBuilder.addBlock(bg, "stone", x , y)
         for x in range(32, 39, 4):
             for y in range( 24, 40, 4): 
                 self.mapBuilder.addBlock(bg, "stone", x , y)
+        for x in range(48, 60, 4):
+            for y in range( 24, 40, 4): 
+                self.mapBuilder.addBlock(bg, "stone", x , y)
+        for x in range(68, 72, 4):
+            for y in range( 24, 40, 4): 
+                self.mapBuilder.addBlock(bg, "stone", x , y)
+        for x in range(76, 84, 4):
+            for y in range( 24, 40, 4): 
+                self.mapBuilder.addBlock(bg, "stone", x , y)
+
+
 
       
 
-        # mud at bottom
+        # mud at bottom ...range(alku, loppu, hyppy)   ...."mud", x, annetaan alkukorkeus)
         for x in range(24, 32, 4):
             self.mapBuilder.addBlock(bg, "mud", x, 26)  
         for x in range(40, 48, 4):
             self.mapBuilder.addBlock(bg, "mud", x, 26)  
-        
+        for x in range(60, 68, 4):
+            self.mapBuilder.addBlock(bg, "mud", x, 26)
+        for x in range(72, 76, 4):
+            self.mapBuilder.addBlock(bg, "mud", x, 26)
 
 
-       # lattiat eli ne josta kasvaa esim ruohoa kaytta def makePlatformia
-        makePlatform(16, 24, 2)
+       # lattiat eli ne josta kasvaa esim ruohoa kaytta def    makePlatformia  ...form(alkux, alkuy, monta 4x4 tilea)
+        makePlatform(16, 24, 2, False)
         makePlatform(32, 24, 2)
-        makePlatform(48, 26, 1)
-        makePlatform(53, 28, 1)
+        makePlatform(48, 24, 3)
+        makePlatform(68, 24, 1)
+        makePlatform(76, 24, 2, rightEndBlock=False)
+
 
         
 
@@ -100,6 +108,8 @@ class World:
         for x in range(0, mapSizex):
             for y in range(0,mapSizey):
                 self.mapBuilder.addBlock(backWall, "wall", x * 4, y * 4)     
+
+        
 
         return startRoom
 
