@@ -60,12 +60,11 @@ def createRoom01(tileSet):
 
 
 
+    mud(tileSet, bg, 24, 26, 2, 10)
   
 
     # mud at bottom ...range(alku, loppu, hyppy)   ...."mud", x, annetaan alkukorkeus)
-    for x in range(24, 32, 4):
-        tileSet.putBlock(bg, "mudSurface", x, 26)  
-        tileSet.putBlock(bg, "mud", x, 26+4)  
+
     for x in range(40, 48, 4):
         tileSet.putBlock(bg, "mudSurface", x, 26)  
         tileSet.putBlock(bg, "mud", x, 26+4)  
