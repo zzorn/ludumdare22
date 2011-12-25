@@ -4,7 +4,7 @@ from resourcemanager import *
 from tilemap import *
 from maputils import *
 
-   # Floor
+# Floor
 def makePlatform(tileSet, layer, startX, y, width, leftEndBlock=True, rightEndBlock=True):
         endX = 4 * width + startX
         for x in range(startX, endX, 4):  
@@ -14,7 +14,7 @@ def makePlatform(tileSet, layer, startX, y, width, leftEndBlock=True, rightEndBl
   
 
 
-    # Kirjahylly!
+# Kirjahylly!
 def kirjahylly(tileSet, layer, x, y, w, h):
    for ty in range(y, y+h*4, 4):
       for tx in range(x+1, x+w*4+1, 4):  
@@ -24,8 +24,8 @@ def kirjahylly(tileSet, layer, x, y, w, h):
 
 
 # muta
-def mud(tileSet, bg, x, y, w, h):
+def mud(tileSet, layer, x, y, w, h):
    for ty in range(y, y+h):  
       for tx in range(x, x+w*4, 4):
-         tileSet.putBlock(bg, "mudSurface", tx, y)
-         tileSet.putBlock(bg, "mud", tx, ty+4) 
+         tileSet.putBlock(layer, "mudSurface", tx, y)
+         tileSet.putBlock(layer, "mud", tx, ty+4) 

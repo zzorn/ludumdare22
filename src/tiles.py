@@ -47,7 +47,7 @@ def setupTiles(tileSize):
     tiles.addRandomAlternative("floor", "floor3", 2)
     tiles.addRandomAlternative("floor", "floor4", 1)
 
-    # Bookshelfts
+    # Bookshelfts front
     tiles.add("bookshelfEdgeLeft1",  "bookshelf", 4, 0, 1, 4, climbable=True)
     tiles.add("bookshelfEdgeLeft2",  "bookshelf", 4, 4, 1, 4, climbable=True)
     tiles.addRandomAlternative("bookshelfEdgeLeft", "bookshelfEdgeLeft1", 1)
