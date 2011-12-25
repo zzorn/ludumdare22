@@ -22,8 +22,7 @@ def createRoom01(tileSet):
     
     
     
-    # kirjahylly parametrit, furniture, alkux, alkuy, isojen kirjahyllypalojen maara leveys, sama korkeus
-    kirjahylly(tileSet, furniture, 33, 20, 1, 1)
+   
         
     #reunat ala koske
     for x in range(0,mapSizex, 4 ):
@@ -42,7 +41,7 @@ def createRoom01(tileSet):
 
     
 
-   #    etukivet eli lattia mutaa ei se paalle tuleva vaa se nelio ... in range(alkuruutu, loppuruutu, hyppays)
+   #    etukivet eli lattia mutta ei se paalle tuleva vaa se nelio ... in range(alkuruutu, loppuruutu, hyppays)
     for x in range(16, 24, 4):
         for y in range( 24, 40, 4): 
             tileSet.putBlock(bg, "stone", x , y)
@@ -76,6 +75,9 @@ def createRoom01(tileSet):
     for x in range(72, 76, 4):
         tileSet.putBlock(bg, "mudSurface", x, 26)
         tileSet.putBlock(bg, "mud", x, 26+4)  
+
+ # kirjahylly parametrit, furniture, alkux, alkuy, isojen kirjahyllypalojen maara leveys, sama korkeus
+    kirjahylly(tileSet, furniture, 33, 20, 1, 1)
 
 
    # lattiat eli ne josta kasvaa esim ruohoa kaytta def    makePlatformia  ...form(alkux, alkuy, monta 4x4 tilea)
