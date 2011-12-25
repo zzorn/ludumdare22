@@ -54,11 +54,11 @@ class Entity():
 
         
 
-    def area(self):
+    def getArea(self):
         self.area.x = self.x - self.xOffset
         self.area.y = self.y - self.yOffset
-        self.area.h = self.image.get_rect().width()
-        self.area.w = self.image.get_rect().height()
+        self.area.h = self.image.get_rect().width
+        self.area.w = self.image.get_rect().height
         return self.area
         
     def update(self, durationSeconds):
@@ -78,7 +78,7 @@ class Entity():
 
     # Returns true if the entity intersects with the area
     def overlaps(self, area):
-        return self.area().colliderect(area)         
+        return self.getArea().colliderect(area)         
 
     # Moves the entity in the specified direction
     def move(self, xDir, yDir, disengage = False):

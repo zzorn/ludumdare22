@@ -15,10 +15,11 @@ class Door(Entity):
 
     # Change state and image
     def setState(self, state):
-        if self.state == doorLocked:
+        print("Setting door state to " + state)
+        if state == doorLocked:
             self.state = doorLocked
             self.setImage(imageManager.get("door_window_pillar", pygame.Rect(0, 0 * tileSize*4, tileSize * 3, tileSize*4)))
-        elif (self.state == doorOpen):    
+        elif state == doorOpen:    
             self.state = doorOpen
             self.setImage(imageManager.get("door_window_pillar", pygame.Rect(0, 2 * tileSize*4, tileSize * 3, tileSize*4)))
         else:    
@@ -28,11 +29,12 @@ class Door(Entity):
 
     # Called when the player activates the door
     def activate(self, player):
+        print("Activating door, current state " + self.state)
         if self.state == doorLocked:
             # If door is locked, take key from player inventory and open door
             # TODO
             return
-        elif (self.state == doorClosed):    
+        elif self.state == doorClosed:    
             # If door is closed, open it
             self.setState(doorOpen)
         else:    

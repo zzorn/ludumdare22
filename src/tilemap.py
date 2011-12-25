@@ -211,7 +211,7 @@ class TileMap:
 
     # Returns first entity overlapping the specified entity, or None if none found.
     def getOverlappingEntity(self, target):
-        area = target.area()
+        area = target.getArea()
         for layer in self.layers:
             entity = layer.getOverlappingEntity(area)
             if not entity == None:

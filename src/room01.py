@@ -9,6 +9,7 @@ from entities import *
 
 
 def createRoom01(tileSet):
+    tileSize = 64
     mapSizex = 100
     mapSizey = 48
     startRoom = TileMap(tileSet.tileSize ,mapSizex ,mapSizey)
@@ -22,7 +23,7 @@ def createRoom01(tileSet):
     foreground = startRoom.addTileLayer('foreground')
     
     # Add doors    
-    entities.add(Door(20, 20, ("room2", "door1"), doorClosed))
+    entities.add(Door(tileSize * 20, tileSize * 24, ("room2", "door1"), doorClosed))
    
         
     #reunat ala koske
