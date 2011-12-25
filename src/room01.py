@@ -41,7 +41,7 @@ def createRoom01(tileSet):
 
     
 
-   #    etukivet eli lattia mutta ei se paalle tuleva vaa se nelio ... in range(alkuruutu, loppuruutu, hyppays)
+    # etukivet eli lattia mutta ei se paalle tuleva vaa se nelio ... in range(alkuruutu, loppuruutu, hyppays)
     for x in range(16, 24, 4):
         for y in range( 24, 40, 4): 
             tileSet.putBlock(bg, "stone", x , y)
@@ -59,18 +59,18 @@ def createRoom01(tileSet):
             tileSet.putBlock(bg, "stone", x , y)
 
 
-    # mud arvot (tileset, bg, alkux, alkuy, leveys aina 4 kertaa, korkeus aina 1 kertaa)
-    mud(tileSet, bg, 24, 26, 2, 10)
-    mud(tileSet, bg, 40, 26, 2, 10)
-    mud(tileSet, bg, 60, 26, 2, 10)
-    mud(tileSet, bg, 72, 26, 1, 10)
+    # mud arvot (tileset, bg, alkux, alkuy, leveys aina 4 kertaa, korkeus aina 4 kertaa)
+    mud(tileSet, bg, 24, 26, 2, 3)
+    mud(tileSet, bg, 40, 26, 2, 3)
+    mud(tileSet, bg, 60, 26, 2, 3)
+    mud(tileSet, bg, 72, 26, 1, 3)
     
 
- # kirjahylly parametrit, furniture, alkux, alkuy, isojen kirjahyllypalojen maara leveys, sama korkeus
+    # kirjahylly parametrit, furniture, alkux, alkuy, isojen kirjahyllypalojen maara leveys, sama korkeus
     kirjahylly(tileSet, furniture, 33, 20, 1, 1)
 
 
-   # lattiat eli ne josta kasvaa esim ruohoa kaytta def    makePlatformia  ...form(alkux, alkuy, monta 4x4 tilea)
+    # lattiat eli ne josta kasvaa esim ruohoa kaytta def    makePlatformia  ...form(alkux, alkuy, monta 4x4 tilea)
     makePlatform(tileSet, ground, 16, 24, 2, False)
     makePlatform(tileSet, ground, 32, 24, 2)
     makePlatform(tileSet, ground, 48, 24, 3)

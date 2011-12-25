@@ -24,14 +24,15 @@ def kirjahylly(tileSet, layer, x, y, w, h):
 
 
 # Muta
+# mud arvot (tileset, layer, alkux, alkuy, leveys aina 4 kertaa, korkeus aina 4 kertaa)
 def mud(tileSet, layer, x, y, w, h):
    # Pinta
    for tx in range(x, x+w*4, 4):
       tileSet.putBlock(layer, "mudSurface", tx, y)
 
    # Deep Mud
-   for ty in range(y, y+h):  
+   for ty in range(y+4, y+h*4, 4):  
       for tx in range(x, x+w*4, 4):
-         tileSet.putBlock(layer, "mud", tx, ty+4) 
+         tileSet.putBlock(layer, "mud", tx, ty) 
 
 
