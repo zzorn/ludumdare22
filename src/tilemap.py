@@ -37,6 +37,12 @@ class Layer:
     def getOverlappingEntity(self, area):
         return None
         
+    def getEntityNamed(self, name):
+        return None    
+        
+    def remove(self, entity):
+        return 
+
 class EntityLayer(Layer):
     def __init__(self, tileMap):
         self.tileMap = tileMap
@@ -64,6 +70,11 @@ class EntityLayer(Layer):
                 return entity 
         return None        
                        
+    def getEntityNamed(self, name):
+        for entity in self.entities:
+            if entity.name == name:
+                return entity 
+        return None    
 
 class TileLayer(Layer):
     def __init__(self, tileMap):
@@ -218,7 +229,17 @@ class TileMap:
                 return entity
         return None
                 
+    # Returns first entity with specified name, or None if none found.
+    def getEntityNamed(self, name):
+        for layer in self.layers:
+            entity = layer.getEntityNamed(name)
+            if not entity == None:
+                return entity
+        return None
     
+    def remove(self, entity):
+        for layer in self.layers:
+            layer.remove(entity)
     
     
 

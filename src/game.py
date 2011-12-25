@@ -48,7 +48,9 @@ world.start()
 # Player
 player = Player(64*17, 64*24, imageManager.getTile("victor", 0, 1, 256))
 player.yOffset -= 20 # Stand on ground
-world.currentRoom.getLayer('player').add(player)
+
+# Add player to world
+world.enterRoom("startRoom", "door1", player)
 
 
 # TODO: Enter room
@@ -120,9 +122,9 @@ while running:
     # Fill screen with black, so that earlier graphics dont show up 
     screen.fill(darkgreyblue)
 
-    world.currentRoom.update(frameDurationSeconds)
+    player.tileMap.update(frameDurationSeconds)
 
-    world.currentRoom.draw(camera)
+    player.tileMap.draw(camera)
 
     # TODO: Draw map
     # TODO: Draw figures

@@ -10,9 +10,10 @@ swimmingState = "swimming"
 
 # Various moving creatures, as well as special map objects
 class Entity():
-    def __init__(self, x, y, image, physics=False):
+    def __init__(self, x, y, image, physics=False, name = ""):
         self.x = x
         self.y = y
+        self.name = ""
         self.tileMap = None
         self.setImage(image)
         

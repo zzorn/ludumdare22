@@ -8,9 +8,10 @@ doorClosed = "doorClosed"
 doorOpen   = "doorOpen"
 
 class Door(Entity):
-    def __init__(self, x, y, destination, state = doorClosed):
-        Entity.__init__(self, x, y, None)
-        self.destination = destination
+    def __init__(self, name, x, y, destinationRoom, destinationPos, state = doorClosed):
+        Entity.__init__(self, x, y, None, False, name)
+        self.destinationRoom = destinationRoom
+        self.destinationPos = destinationPos
         self.setState(doorClosed)
 
     # Change state and image
@@ -39,7 +40,8 @@ class Door(Entity):
             self.setState(doorOpen)
         else:    
             # if door is open, step through
-            self.setState(doorClosed)
+            self.tileMap.world.enterRoom(self.destinationRoom, self.destinationPos, player)
+            #self.setState(doorClosed)
         
 
 

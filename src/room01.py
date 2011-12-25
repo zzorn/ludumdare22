@@ -22,8 +22,9 @@ def createRoom01(tileSet):
     player     = startRoom.addEntityLayer('player')
     foreground = startRoom.addTileLayer('foreground')
     
-    # Add doors    
-    entities.add(Door(tileSize * 20, tileSize * 24, ("room2", "door1"), doorClosed))
+    # Add doors
+    entities.add(Door("door1", tileSize * 20, tileSize * 24, "chairRoom", "door2", doorClosed))
+    entities.add(Door("door2", tileSize * 40, tileSize * 24, "startRoom", "door1", doorClosed))
    
         
     #reunat ala koske
