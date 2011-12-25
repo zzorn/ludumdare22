@@ -4,6 +4,7 @@ from pygame.locals import *
 from resourcemanager import *
 from tilemap import *
 from maputils import *
+from roomparts import *
 
 
 def createRoom01(tileSet):
@@ -20,22 +21,9 @@ def createRoom01(tileSet):
     foreground = startRoom.addTileLayer('foreground')
     
     
-    def makePlatform(startX, y, width, leftEndBlock=True, rightEndBlock=True):
-        endX = 4 * width + startX
-        for x in range(startX, endX, 4):  
-            tileSet.putBlock(ground, "floor", x, y)
-        if leftEndBlock: tileSet.putBlock(ground, "floorLeft",  (startX - 1), y)
-        if rightEndBlock: tileSet.putBlock(ground, "floorRight", (endX      ), y)
-  
-
-
-    # Kirjahylly!
-    def kirjahylly(x, y):
-        tileSet.putBlock(furniture, "bookshelf", x+1, y)
-        tileSet.putBlock(furniture, "bookshelfEdgeLeft", x, y)
-        tileSet.putBlock(furniture, "bookshelfEdgeRight", x+5, y)
-
-    kirjahylly(33, 20)
+    
+    # kirjahylly parametrit, furniture, alkux, alkuy, isojen kirjahyllypalojen maara leveys, sama korkeus
+    kirjahylly(tileSet, furniture, 33, 20, 1, 1)
         
     #reunat ala koske
     for x in range(0,mapSizex, 4 ):
