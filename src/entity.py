@@ -2,26 +2,6 @@ import pygame, random, math
 from pygame.locals import *
 from resourcemanager import *
 
-# TODO: Not used, remove?
-def createEntity(obj):
-    x = obj.x + obj.width / 2
-    y = obj.y + obj.height
-    entity = None
-    kind = obj.type
-    print ("Creating entity " + kind + " at " + str(x) + ", " + str(y))
-    if kind == "Item":
-        if obj.Type == "TeddyBear":
-            print("Making teddybear")    
-            img = imageManager.getTile("creepers", random.randrange(0,5), 2, 128, transparent=True)
-            print ("image is ", img)
-            entity = Entity(x, y, img)
-        else: 
-            print("Could not create item of type ", obj.Type)
-    else:
-        print("Could not create object of type ", kind)    
-    return entity    
-
-
 # Possible states that an entity can be in
 jumpingState = "jumping"
 climbingState = "climbing"
@@ -34,9 +14,7 @@ class Entity():
         self.x = x
         self.y = y
         self.tileMap = None
-        self.image = image
-        self.xOffset = self.image.get_rect().centerx
-        self.yOffset = self.image.get_rect().bottom
+        self.setImage(image)
         
         # Physics variables:
         self.doPhysics = physics
@@ -59,8 +37,29 @@ class Entity():
         self.airResistance = 0.3
         self.waterResistance = 2
         self.bounce = False
+        self.area = pygame.Rect(0, 0, 1, 1)
         
         return
+
+    def setImage(self, image):
+        self.image = image 
+        if not image == None:                
+            self.xOffset = self.image.get_rect().centerx
+            self.yOffset = self.image.get_rect().bottom
+            self.area = image.get_rect().copy()
+        else:
+            self.xOffset = 0
+            self.yOffset = 0
+            self.area = pygame.Rect(0, 0, 1, 1)
+
+        
+
+    def area(self):
+        self.area.x = self.x - self.xOffset
+        self.area.y = self.y - self.yOffset
+        self.area.h = self.image.get_rect().width()
+        self.area.w = self.image.get_rect().height()
+        return self.area
         
     def update(self, durationSeconds):
         if self.doPhysics and self.tileMap is not None:
@@ -72,6 +71,14 @@ class Entity():
             camera.drawImage(self.image, 
                              self.x - self.xOffset, 
                              self.y - self.yOffset)
+
+    # Called when the player tries to activate the entity
+    def activate(self, player):
+        return
+
+    # Returns true if the entity intersects with the area
+    def overlaps(self, area):
+        return self.area().colliderect(area)         
 
     # Moves the entity in the specified direction
     def move(self, xDir, yDir, disengage = False):

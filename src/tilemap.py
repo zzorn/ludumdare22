@@ -34,6 +34,8 @@ class Layer:
     def swimmableAt(self, x, y):
         return False    
         
+    def getOverlappingEntity(self, area):
+        return None
         
 class EntityLayer(Layer):
     def __init__(self, tileMap):
@@ -55,8 +57,13 @@ class EntityLayer(Layer):
     def draw(self, camera):
         for entity in self.entities:
             entity.draw(camera)
-        
-
+    
+    def getOverlappingEntity(self, area):
+        for entity in self.entities:
+            if entity.overlaps(area):
+                return entity 
+        return None        
+                       
 
 class TileLayer(Layer):
     def __init__(self, tileMap):
@@ -201,4 +208,17 @@ class TileMap:
                 return True
         return False            
 
+
+    # Returns first entity overlapping the specified entity, or None if none found.
+    def getOverlappingEntity(self, target):
+        area = target.area()
+        for layer in self.layers:
+            entity = layer.getOverlappingEntity(area)
+            if not entity == None:
+                return entity
+        return None
+                
+    
+    
+    
 

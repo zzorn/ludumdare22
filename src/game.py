@@ -22,7 +22,7 @@ keyLeft      = [K_LEFT, K_a]
 keyRight     = [K_RIGHT, K_d]
 keyActivate  = [K_SPACE, K_RETURN]
 keyBack      = [K_ESCAPE]
-toggleCamera = K_v
+toggleCamera = [K_v]
 
 # Setup screen
 pygame.init()
@@ -86,7 +86,11 @@ while running:
             running = False
         elif event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
             running = False
-        elif event.type == pygame.KEYDOWN and event.key == toggleCamera:
+        elif event.type == pygame.KEYDOWN and event.key in keyActivate:
+            otherEntity = world.currentRoom.getOverlappingEntity(player)
+            if not otherEntity is None:
+                otherEntity.activate(player)
+        elif event.type == pygame.KEYDOWN and event.key in toggleCamera:
             if isFreeCamMode():
                 camera.target = player
             else:

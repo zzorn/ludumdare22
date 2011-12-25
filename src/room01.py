@@ -5,6 +5,7 @@ from resourcemanager import *
 from tilemap import *
 from maputils import *
 from roomparts import *
+from entities import *
 
 
 def createRoom01(tileSet):
@@ -20,8 +21,8 @@ def createRoom01(tileSet):
     player     = startRoom.addEntityLayer('player')
     foreground = startRoom.addTileLayer('foreground')
     
-    
-    
+    # Add doors    
+    entities.add(Door(20, 20, ("room2", "door1"), doorClosed))
    
         
     #reunat ala koske
