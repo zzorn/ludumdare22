@@ -59,21 +59,12 @@ def createRoom01(tileSet):
             tileSet.putBlock(bg, "stone", x , y)
 
 
-
+    # mud arvot (tileset, bg, alkux, alkuy, leveys aina 4 kertaa, korkeus aina 1 kertaa)
     mud(tileSet, bg, 24, 26, 2, 10)
-  
-
-    # mud at bottom ...range(alku, loppu, hyppy)   ...."mud", x, annetaan alkukorkeus)
-
-    for x in range(40, 48, 4):
-        tileSet.putBlock(bg, "mudSurface", x, 26)  
-        tileSet.putBlock(bg, "mud", x, 26+4)  
-    for x in range(60, 68, 4):
-        tileSet.putBlock(bg, "mudSurface", x, 26)
-        tileSet.putBlock(bg, "mud", x, 26+4)  
-    for x in range(72, 76, 4):
-        tileSet.putBlock(bg, "mudSurface", x, 26)
-        tileSet.putBlock(bg, "mud", x, 26+4)  
+    mud(tileSet, bg, 40, 26, 2, 10)
+    mud(tileSet, bg, 60, 26, 2, 10)
+    mud(tileSet, bg, 72, 26, 1, 10)
+    
 
  # kirjahylly parametrit, furniture, alkux, alkuy, isojen kirjahyllypalojen maara leveys, sama korkeus
     kirjahylly(tileSet, furniture, 33, 20, 1, 1)
