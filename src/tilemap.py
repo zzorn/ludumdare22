@@ -233,7 +233,7 @@ class TileMap:
     def getEntityNamed(self, name):
         for layer in self.layers:
             entity = layer.getEntityNamed(name)
-            if not entity == None:
+            if not entity is None:
                 return entity
         return None
     
