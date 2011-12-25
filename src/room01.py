@@ -79,11 +79,11 @@ def createRoom01(tileSet):
 
 
    # lattiat eli ne josta kasvaa esim ruohoa kaytta def    makePlatformia  ...form(alkux, alkuy, monta 4x4 tilea)
-    makePlatform(16, 24, 2, False)
-    makePlatform(32, 24, 2)
-    makePlatform(48, 24, 3)
-    makePlatform(68, 24, 1)
-    makePlatform(76, 24, 2, rightEndBlock=False)
+    makePlatform(tileSet, ground, 16, 24, 2, False)
+    makePlatform(tileSet, ground, 32, 24, 2)
+    makePlatform(tileSet, ground, 48, 24, 3)
+    makePlatform(tileSet, ground, 68, 24, 1)
+    makePlatform(tileSet, ground, 76, 24, 2, rightEndBlock=False)
 
 
     
