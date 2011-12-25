@@ -28,7 +28,7 @@ def setupTiles(tileSize):
     tiles.addRandomAlternative("stone", "stone4", 2)
 
     # Slime 
-    tiles.add("mud", "walls", 0, 8, 4, 4, swimmable=True)
+    tiles.add("mud", "walls_solid", 0, 8, 4, 4, swimmable=True)
     tiles.add("mudSurface1", "walls_transparent", 0, 2, 4, 4, swimmable=True)
     tiles.add("mudSurface2", "walls_transparent", 4, 2, 4, 4, swimmable=True)
     tiles.addRandomAlternative("mudSurface", "mudSurface1", 1)
