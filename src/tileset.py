@@ -42,6 +42,19 @@ class RandomBlock:
         random.choice(self.alternatives).putBlock(tileLayer, tileX, tileY)
         
 
+
+class CombinedBlock:
+    def __init__(self):
+        self.blocks = {}
+
+    def addBlock(self, componentBlock, x, y):
+        self.blocks[(x, y)] = componentBlock
+        
+    def putBlock(self, tileLayer, tileX, tileY):
+        for pos in self.blocks:
+            self.blocks[pos].putBlock(tileLayer, tileX + pos[0], tileY + pos[1]) 
+        
+
 # Contains set of named tiles and tile blocks loaded from image files.
 class TileSet:
     def __init__(self, tileSize):
@@ -64,6 +77,20 @@ class TileSet:
             
 
         randomBlock.addAlternative(self.blocks[otherBlock], weight)
+
+
+    def addCombinedBlock(self, blockName, otherBlock, x, y):
+        if blockName in self.blocks:
+            combinedBlock = self.blocks[blockName]
+            if combinedBlock is not CombinedBlock:
+                print("ERROR: Can not add component to "+blockName+", it's not a combined block!")
+                # TODO: Throw exception
+        else:
+            combinedBlock = CombinedBlock()
+            self.blocks[blockName] = combinedBlock
+            
+
+        combinedBlock.addBlock(self.blocks[otherBlock], x, y)
 
 
     def putBlock(self, tileLayer, blockName, tileX, tileY):
